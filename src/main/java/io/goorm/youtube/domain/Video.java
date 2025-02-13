@@ -11,8 +11,14 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-@DynamicInsert
 public class Video {
+
+    public Video() {
+        this.publishYn = 0;
+        this.deleteYn = "N";
+
+        this.member_Seq = 12L;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,16 +30,10 @@ public class Video {
     private String title;
     private String content;
 
-    @OneToMany(mappedBy = "memberSeq", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Member> Member;
-
-    @Transient
-    private String channelName;
-
     private int publishYn;
     private String deleteYn;
 
-    private String memberSeq;
+    private Long member_Seq;
 
     private String regDate;
 

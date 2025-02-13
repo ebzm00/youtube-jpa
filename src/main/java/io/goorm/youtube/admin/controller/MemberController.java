@@ -1,8 +1,7 @@
 package io.goorm.youtube.admin.controller;
 
-import io.goorm.youtube.domain.Admin;
-import io.goorm.youtube.service.MemberService;
 import io.goorm.youtube.domain.Member;
+import io.goorm.youtube.service.impl.MemberServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +17,10 @@ import java.util.Optional;
 @RequestMapping("/mgr")
 public class MemberController {
 
-    private final MemberService memberService;
+    private final MemberServiceImpl memberService;
 
     @Autowired
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberServiceImpl memberService) {
         this.memberService = memberService;
     }
 

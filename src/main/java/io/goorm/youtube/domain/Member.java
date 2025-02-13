@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
 @Getter
 @Entity
-@DynamicInsert
 public class Member {
 
     @Id
@@ -30,8 +30,9 @@ public class Member {
     private String useYn;
     private String regDate;
 
-    @OneToMany(mappedBy = "memberSeq", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Video> videos;
+    @OneToMany
+    @JoinColumn(name = "member_seq")
+    private List<Video> videos = new ArrayList<>();
 
     @Transient
     private int videoCnt;
